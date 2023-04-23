@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HalamanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,5 @@ Route::get('/', function () {
 Route::get('/app', function () {
     return view('app');
 });
+Route::get('/home', [HalamanController::class, 'home']);
+Route::get('/sidebar', [HalamanController::class, 'partial']);
