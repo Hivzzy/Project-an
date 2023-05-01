@@ -10,8 +10,11 @@ class HalamanController extends Controller
     {
         return view("home");
     }
-    function partial()
+    function data()
     {
-        return view("/partials/sidebar");
+        return view("data");
+    }
+    function test(){
+        return view("test");
     }
 }

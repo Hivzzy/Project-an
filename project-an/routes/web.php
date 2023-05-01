@@ -21,4 +21,5 @@ Route::get('/app', function () {
     return view('app');
 });
 Route::get('/home', [HalamanController::class, 'home']);
-Route::get('/sidebar', [HalamanController::class, 'partial']);
+Route::get('/data', [HalamanController::class, 'data']);
+Route::get('/coba', [HalamanController::class, 'test']);
