@@ -39,13 +39,13 @@
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="{{ url('/home') }}"> <i class="menu-icon fa fa-dashboard"></i>Home </a>
+                        <a href="{{ url('/home') }}"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
                     <li>
-                        <a href="{{ url('/data') }}"> <i class="menu-icon fa fa-puzzle-piece"></i>Jenjang </a>
+                        <a href="{{ url('/data') }}"> <i class="menu-icon fa fa-puzzle-piece"></i>Data Karyawan </a>
                     </li>
                     <li>
-                        <a href="{{ url('/') }}"> <i class="menu-icon fa fa-puzzle-piece"></i>Program </a>
+                        <a href="{{ url('/') }}"> <i class="menu-icon fa fa-puzzle-piece"></i>Slip Gaji </a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->

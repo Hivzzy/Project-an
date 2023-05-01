@@ -32,7 +32,11 @@
             <div class="card">
                 <div class="card-header">
                     <strong class="card-title">Data Table</strong>
-                    <button type="button" class="btn btn-primary col-md-1 offset-md-10 col-sm-6">Upload</button>
+                    <form action="#" method="POST" enctype="multipart/form-data">
+                    <input class="col-md-4 offset-md-6 col-sm-6" type="file" name="file">
+                    <button type="submit" name="submit" class="btn btn-primary">Upload</button>
+                    </form>
+                    
                 </div>
                 <div class="card-body">
           <table id="bootstrap-data-table" class="table table-striped table-bordered">
