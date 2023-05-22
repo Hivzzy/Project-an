@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HalamanController;
+use App\Http\Controllers\UserController;
+use Illuminate\Foundation\Auth\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,5 +23,6 @@ Route::get('/app', function () {
     return view('app');
 });
 Route::get('/home', [HalamanController::class, 'home']);
-Route::get('/data', [HalamanController::class, 'data']);
+Route::get('/data', [UserController::class, 'index']);
+Route::get('/generatepdf', [UserController::class, 'generatepdf'])->name('user.pdf');
 Route::get('/coba', [HalamanController::class, 'test']);
