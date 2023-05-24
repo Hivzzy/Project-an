@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('daftar_gaji', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->string('nama_karyawan', 100);
+            $table->string('email', 50);
             $table->string('jabatan', 50);
             $table->integer('hari_kerja');
             $table->integer('gaji_perhari');
