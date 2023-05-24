@@ -14,8 +14,9 @@ class HalamanController extends Controller
     {
         return view("data");
     }
-    function test(){
+    function test()
+    {
         return view("test");
     }
-    
+
 }

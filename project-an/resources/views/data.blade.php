@@ -33,20 +33,24 @@
                 <div class="card-header">
                     <strong class="card-title">Data Table</strong>
                     <form action="#" method="POST" enctype="multipart/form-data">
-                    <input class="col-md-4 offset-md-6 col-sm-6" type="file" name="file">
+                    <input class="col-md-2 offset-md-9 col-sm-5" type="file" name="file">
                     <button type="submit" name="submit" class="btn btn-primary">Upload</button>
                     </form>
                     
                 </div>
                 <div class="card-body">
           <table id="bootstrap-data-table" class="table table-striped table-bordered">
-            
             <thead>
               <tr>
+                <th>No</th>
                 <th>Name</th>
                 <th>Position</th>
-                <th>Office</th>
+                <th>Attendances</th>
                 <th>Salary</th>
+                <th>All Payments</th>
+                <th>Addition</th>
+                <th>Fee</th>
+                <th>Total Payments</th>
               </tr>
             </thead>
             <tbody>
@@ -54,8 +58,13 @@
               <tr>
                 <td>{{ $row->id }}</td>
                 <td>{{ $row->name }}</td>
-                <td>{{ $row->email }}</td>
+                <td>Front End Developer</td>
+                <td>27</td>
                 <td>$320,800</td>
+                <td>Rp. 1.000.0000</td>
+                <td>0</td>
+                <td>0</td>
+                <td>Rp. 2.000.000</td>
               </tr>
               @endforeach
             </tbody>
@@ -63,8 +72,6 @@
                 </div>
             </div>
         </div>
-
-
       </div>
     </div>
   </div>
