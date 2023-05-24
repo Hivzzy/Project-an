@@ -33,7 +33,7 @@
                 <div class="card-header">
                     <strong class="card-title">Data Table</strong>
                     <form action="#" method="POST" enctype="multipart/form-data">
-                    <input class="col-md-2 offset-md-9 col-sm-5" type="file" name="file">
+                    <input class="col-md-2 offset-md-6 col-sm-4" type="file" name="file">
                     <button type="submit" name="submit" class="btn btn-primary">Upload</button>
                     </form>
                     
