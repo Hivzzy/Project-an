@@ -32,7 +32,7 @@
                     aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="">MyBimbel</a>
+                <a class="navbar-brand" href="">CIHAMPELAS HOTEL GROUP</a>
                 <a class="navbar-brand hidden" href="">M</a>
             </div>
 
@@ -45,7 +45,7 @@
                         <a href="{{ url('/data') }}"> <i class="menu-icon fa fa-puzzle-piece"></i>Data Karyawan </a>
                     </li>
                     <li>
-                        <a href="{{ url('/') }}"> <i class="menu-icon fa fa-puzzle-piece"></i>Slip Gaji </a>
+                        <a href="{{ url('/test') }}"> <i class="menu-icon fa fa-puzzle-piece"></i>Slip Gaji </a>
                     </li>
                 </ul>
             </div><!-- /.navbar-collapse -->

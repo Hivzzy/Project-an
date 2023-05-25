@@ -1,13 +1,13 @@
 @extends('main')
 
-@section('title', 'data')
+@section('title', 'user')
 
 @section('breadcrumbs')
     <div class="breadcrumbs">
         <div class="col-sm-4">
             <div class="page-header float-left">
                 <div class="page-title">
-                    <h1>Import Laporan</h1>
+                    <h1>Data User</h1>
                 </div>
             </div>
         </div>
@@ -27,47 +27,43 @@
     <div class="content mt-3">
         <div class="animated fadeIn">
             <div class="row">
-
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header">
-                            <strong class="card-title">Data Table</strong>
-                            <form action="{{ route('upload.file') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <input class="col-md-2 offset-md-6 col-sm-4" type="file" name="file">
-                                <button type="submit" name="submit" class="btn btn-primary">Upload</button>
-                            </form>
-
-                        </div>
                         <div class="card-body">
                             <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
                                         <th>No</th>
                                         <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Attendances</th>
-                                        <th>Salary</th>
-                                        <th>All Payments</th>
-                                        <th>Addition</th>
-                                        <th>Fee</th>
-                                        <th>Total Payments</th>
+                                        <th>Username</th>
+                                        <th>Role</th>
+                                        <th>Password</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data as $row)
+                                    {{-- @foreach ($users as $user) --}}
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $row->nama_karyawan }}</td>
-                                            <td>{{ $row->jabatan }}</td>
-                                            <td>{{ $row->hari_kerja }}</td>
-                                            <td>{{ $row->gaji_perhari }}</td>
-                                            <td>{{ $row->gaji_kotor }}</td>
-                                            <td>{{ $row->tambahan }}</td>
-                                            <td>{{ $row->kasbon }}</td>
-                                            <td>{{ $row->gaji_bersih }}</td>
+                                            <td>1</td>
+                                            <td>1</td>
+                                            <td>1</td>
+                                            <td>1</td>
+                                            <td>1</td>
+                                            {{-- <td>{{ $user->id }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->username }}</td>
+                                            <td>{{ $user->role }}</td>
+                                            <td>{{ $user->password }}</td> --}}
+                                            <td>
+                                                <a href="">
+                                                    <button type="button" class="btn btn-primary"><i>Edit</i></button>
+                                                </a>
+                                                <a href="">
+                                                    <button type="button" class="btn btn-danger"><i>Hapus</i></button>
+                                                </a>
+                                            </td>
                                         </tr>
-                                    @endforeach
+                                    {{-- @endforeach --}}
                                 </tbody>
                             </table>
                         </div>
