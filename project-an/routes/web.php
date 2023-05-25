@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HalamanController;
+use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Auth\User;
 
@@ -17,7 +18,7 @@ use Illuminate\Foundation\Auth\User;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 Route::get('/app', function () {
     return view('app');
@@ -31,3 +32,4 @@ Route::get('/data', [UserController::class, 'index']);
 Route::get('/test', [HalamanController::class, 'test']);
 Route::get('/generatepdf', [UserController::class, 'generatepdf'])->name('user.pdf');
 Route::get('/coba', [HalamanController::class, 'test']);
+Route::POST('/upload', [PayrollController::class, 'uploadExcel'])->name('upload.file');
