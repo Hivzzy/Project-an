@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Payroll;
 use Ramsey\Uuid\Uuid;
+use App\Models\Payroll;
 use Illuminate\Http\Request;
-
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Maatwebsite\Excel\Concerns\WithMultipleSheets;
-use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
 
 class PayrollController extends Controller
 {
@@ -57,12 +54,12 @@ class PayrollController extends Controller
             }
 
             file_put_contents(public_path('/file_payroll/' . $nama_file_asli), $csvData);
+            Payroll::truncate();
 
             (new DaftarGaji)->import(public_path('/file_payroll/' . $nama_file_asli), null, \Maatwebsite\Excel\Excel::CSV);
+            return redirect()->route('show.data');
         } else {
-            return response()->json([
-                'message' => 'File upload failed.',
-            ], 400);
+            // return redirect()->back()->withInput()->withErrors(['error' => 'Data tidak boleh kosong.']);
         }
     }
 }
