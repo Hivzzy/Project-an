@@ -5,6 +5,7 @@ use App\Http\Controllers\HalamanController;
 use App\Mail\HelloMail;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\PayrollController;
+use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Auth\User;
 
@@ -35,7 +36,5 @@ Route::get('/test', [HalamanController::class, 'test']);
 Route::get('/generatepdf', [UserController::class, 'generatepdf'])->name('user.pdf');
 Route::get('/coba', [HalamanController::class, 'test']);
 
-Route::get('/sendMail', function(){
-    Mail::to('ikra8520@gmail.com')->send(new HelloMail("Slip Gaji"));
-});
+Route::get('/sendMail', [SendEmailController::class, 'index']);
 Route::POST('/upload', [PayrollController::class, 'uploadExcel'])->name('upload.file');

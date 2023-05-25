@@ -20,16 +20,13 @@
         </p>
         <ol>
             <li>
-                Nama: [Nama Karyawan]
+                Nama: {{ $payroll->nama_karyawan }}
             </li>
             <li>
-                Departemen: [Nama Departemen]
+                Jabatan: {{ $payroll->jabatan }}
             </li>
             <li>
-                Jabatan: [Nama Jabatan]
-            </li>
-            <li>
-                Tanggal Pembayaran: [Tanggal Pembayaran]
+                Tanggal Pembayaran: {{ $payroll->created_at }}
             </li>
         </ol>
         <p>
@@ -50,7 +47,7 @@
             [Jabatan Anda]
         </p>
         <p>
-            [Perusahaan Anda]
+            Cihampelas Hotel
         </p>
     </div>
 </body>

@@ -2,27 +2,32 @@
 
 namespace App\Mail;
 
+use App\Models\Payroll;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\File;
 
 class HelloMail extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $subject;
+    public $payroll;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct(String $subject)
+    public function __construct(String $subject, Payroll $payroll)
     {
         $this->subject = $subject;
+        $this->payroll = $payroll;
+        // dd($this->payroll);
     }
 
     /**
@@ -46,7 +51,7 @@ class HelloMail extends Mailable
     {
         return new Content(
             view: 'mail.hello',
-            
+            with: [$this->payroll],
         );
     }
 
@@ -57,6 +62,7 @@ class HelloMail extends Mailable
      */
     public function attachments()
     {
-        return [];
+        $file = public_path('file_payroll/PAYROLL 10 JAN 23 -  09 FEB 23 - Copy.xlsx');
+        return [$file];
     }
 }
