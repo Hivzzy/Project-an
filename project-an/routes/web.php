@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HalamanController;
+use App\Mail\HelloMail;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +25,7 @@ Route::get('/app', function () {
 Route::get('/home', [HalamanController::class, 'home']);
 Route::get('/data', [HalamanController::class, 'data']);
 Route::get('/coba', [HalamanController::class, 'test']);
+
+Route::get('/sendMail', function(){
+    Mail::to('ikra8520@gmail.com')->send(new HelloMail("Slip Gaji"));
+});
