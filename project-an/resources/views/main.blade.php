@@ -32,7 +32,7 @@
                     aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="">MyBimbel</a>
+                <a class="navbar-brand" href="">CIHAMPELAS HOTEL GROUP</a>
                 <a class="navbar-brand hidden" href="">M</a>
             </div>
 
