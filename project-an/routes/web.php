@@ -31,7 +31,7 @@ Route::get('login', [AuthController::class, 'userLogin'])->name('login');
 Route::post('/user/login', [AuthController::class, 'authenticate']);
 
 Route::get('/home', [HalamanController::class, 'home']);
-Route::get('/data', [UserController::class, 'index']);
+Route::get('/data', [UserController::class, 'index'])->name('show.data');
 Route::get('/test', [HalamanController::class, 'test']);
 Route::get('/generatepdf', [UserController::class, 'generatepdf'])->name('user.pdf');
 Route::get('/coba', [HalamanController::class, 'test']);
