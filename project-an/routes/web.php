@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HalamanController;
 use App\Mail\HelloMail;
@@ -20,21 +21,38 @@ use Illuminate\Foundation\Auth\User;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
-Route::get('/app', function () {
-    return view('app');
-});
+Route::redirect('/', 'login');
+// Route::get('/', function () {
+//     return view('home');
+// });
+// Route::get('/app', function () {
+//     return view('app');
+// });
 
 Route::get('login', [AuthController::class, 'userLogin'])->name('login');
 Route::post('/user/login', [AuthController::class, 'authenticate']);
 
-Route::get('/home', [HalamanController::class, 'home']);
-Route::get('/data', [UserController::class, 'index'])->name('show.data');
-Route::get('/test', [HalamanController::class, 'test']);
-Route::get('/generatepdf', [UserController::class, 'generatepdf'])->name('user.pdf');
-Route::get('/coba', [HalamanController::class, 'test']);
+Route::middleware(['auth', 'auth.session'])->group(function(){
+    //Dashboard
+    
+    Route::get('/dashboard', [AuthController::class, 'dashboard']);
+    Route::post('user/logout', [AuthController::class, 'logout']);
 
-Route::get('/sendMail', [SendEmailController::class, 'index']);
-Route::POST('/upload', [PayrollController::class, 'uploadExcel'])->name('upload.file');
+    //Kelola Akun
+
+    //Data Karyawan
+    Route::get('/data', [UserController::class, 'index'])->name('show.data');
+    Route::POST('/upload', [PayrollController::class, 'uploadExcel'])->name('upload.file');
+    Route::get('/sendMail', [SendEmailController::class, 'index']);
+
+    //Slip Gaji
+    Route::get('/generatepdf', [UserController::class, 'generatepdf'])->name('user.pdf');
+    Route::get('/viewpdf', [UserController::class, 'viewPdf']);
+    Route::get('/test', [AuthController::class, 'viewslip']);
+    
+
+});
+
+
+
+

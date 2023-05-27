@@ -20,9 +20,12 @@
 
   <body>
       <button class="btn btn-primary"> Generate PDF </button>
-      <table class="table">
+      <table class="table" style=" border-radius: 1px ">
           <thead>
-            tr
+            <tr>
+              <td ><img src="https://images.unsplash.com/photo-1566657817181-c69e4a8eeb1e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1287&q=80" alt=""></td>
+              <td>Hello Wordl</td>
+            </tr>
           </thead>
       </table>
   </body>

@@ -1,13 +1,13 @@
 @extends('main')
 
-@section('title', 'data')
+@section('title', 'gaji')
 
 @section('breadcrumbs')
     <div class="breadcrumbs">
         <div class="col-sm-4">
             <div class="page-header float-left">
                 <div class="page-title">
-                    <h1>Import Laporan</h1>
+                    <h1>Generate Laporan</h1>
                 </div>
             </div>
         </div>
@@ -43,19 +43,16 @@
                             <table id="bootstrap-data-table" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>No</th>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Attendances</th>
-                                        <th>Salary</th>
-                                        <th>All Payments</th>
-                                        <th>Addition</th>
-                                        <th>Fee</th>
-                                        <th>Total Payments</th>
+                                        <th>
+                                            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/4b05a07f-b8dd-495d-9e91-e5ad831019ca-profile_image-300x300.png" alt="">
+                                            PAYROLL SHEET <br>
+                                            Salaries
+                                        </th>
+                                        <th><td></td> <td></td></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data as $row)
+                                    {{-- @foreach ($data as $row)
                                         <tr>
                                             <td>{{ $loop->iteration }}</td>
                                             <td>{{ $row->nama_karyawan }}</td>
@@ -67,7 +64,7 @@
                                             <td>{{ $row->kasbon }}</td>
                                             <td>{{ $row->gaji_bersih }}</td>
                                         </tr>
-                                    @endforeach
+                                    @endforeach --}}
                                 </tbody>
                             </table>
                         </div>

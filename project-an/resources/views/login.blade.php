@@ -9,8 +9,6 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
     <style>
         * {
             padding: 0;
@@ -19,7 +17,7 @@
         }
 
         body {
-            background: rgb(219, 226, 226)
+            background: rgb(61, 121, 121)
         }
 
         .row {
@@ -61,15 +59,19 @@
                 <div class="col-lg-7 px-5 pt-5">
                     <h1 class="font-weight-bold py-3">Welcome to my Website</h1>
                     <h4 class="col-lg-7">Login</h4>
-                    <form method="post" action="login.php">
+                    <form method="post" action="/user/login">
+                        @csrf
                         <div class="row no-gutters col-lg-7">
-                            <input id="username" class="form-control my-4 p-2" type="text" name="" placeholder="Username">
+                            <input id="username" name="username" class="form-control my-4 p-2" type="text" name="" placeholder="Username">
                         </div>
                         <div class="row no-gutters col-lg-7">
-                            <input id="password" class="form-control mb-4 p-2" type="password" name="" placeholder="******">
+                            <input id="password" name="password" class="form-control mb-4 p-2" type="password" name="" placeholder="******">
                         </div>
+                        @error('username')
+                        <div id="error" class="row no-gutters col-lg-7">{{ $message }}</div>
+                        @enderror
                         <div class="col-lg-7">
-                            <button class="btn1 mt-3 mb-5 " type="button">Login</button>
+                            <button class="btn1 mt-3 mb-5 " type="submit">Login</button>
                         </div>
                     </form>
                 </div>
