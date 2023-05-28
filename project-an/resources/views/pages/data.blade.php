@@ -27,16 +27,18 @@
     <div class="content mt-3">
         <div class="animated fadeIn">
             <div class="row">
-
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
                             <strong class="card-title">Data Table</strong>
+                            @if (Auth::user()->role_id != 1)
                             <form action="{{ route('upload.file') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <input class="col-md-2 offset-md-6 col-sm-4" type="file" name="file">
                                 <button type="submit" name="submit" class="btn btn-primary">Upload</button>
                             </form>
+                            @endif
+                            
 
                         </div>
                         <div class="card-body">

@@ -16,6 +16,8 @@ class AuthController extends Controller
 
     public function dashboard()
     {
+
+
         return view('pages.DashboardView', [
             'title' => 'Dashboard',
             'active' => 'dashboard',

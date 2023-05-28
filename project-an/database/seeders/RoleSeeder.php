@@ -16,19 +16,10 @@ class RoleSeeder extends Seeder
     public function run()
     {
         RoleModel::create([
-            'role_name' => 'CEO',
+            'role_name' => 'Top Management',
         ]);
         RoleModel::create([
-            'role_name' => 'Head of Administration',
-        ]);
-        RoleModel::create([
-            'role_name' => 'Head of Operation',
-        ]);
-        RoleModel::create([
-            'role_name' => 'Head of Marketing',
-        ]);
-        RoleModel::create([
-            'role_name' => 'Head of Finance',
+            'role_name' => 'Accounting',
         ]);
     }
 }

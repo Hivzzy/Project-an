@@ -9,6 +9,7 @@ use App\Http\Controllers\PayrollController;
 use App\Http\Controllers\SendEmailController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Auth\User;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,9 @@ Route::middleware(['auth', 'auth.session'])->group(function(){
     Route::post('user/logout', [AuthController::class, 'logout']);
 
     //Kelola Akun
+    Route::get('/akun', [UserController::class, 'indexAkun']);
+    Route::get('/akun/edit/{id}', [UserController::class, 'displayEditUser']);
+    Route::post('/akun/edit/{id}', [UserController::class, 'updateUser']);
 
     //Data Karyawan
     Route::get('/data', [UserController::class, 'index'])->name('show.data');
