@@ -35,7 +35,7 @@
                            
                             <form action="{{ route('upload.file') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <input class="col-md-2 offset-md-8 col-sm-2" type="file" name="file">
+                                <input class="col-md-2 offset-md-7 col-sm-2" type="file" name="file">
                                 <button type="submit" name="submit" class="rounded-left rounded-right fa fa-upload btn btn-lg btn-primary">  Upload  </button>
                                     <a href="#" >
                                         <button class="rounded-left rounded-right fa fa-mail-forward btn btn-lg btn-success">  Generate  </button>
