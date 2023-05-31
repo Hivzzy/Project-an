@@ -86,9 +86,9 @@ class UserController extends Controller
         $pdf = Pdf::loadView('pages.invoice', compact('data_payroll'));
 
         $content = $pdf->download()->getOriginalContent();
-        // dd($content);
-        Storage::disk('local')->put('ikram/invoice.pdf', $content);
-        // Storage::put('payrollpdf2/payroll.pdf', $content);
+
+        $path = 'public/invoice/' . $data_payroll->id . '.pdf';
+        Storage::disk('local')->put($path, $content);
         return $pdf->stream('invoice.pdf');
     }
 }
