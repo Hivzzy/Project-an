@@ -40,6 +40,9 @@
                                     <a href="#" >
                                         <button class="rounded-left rounded-right fa fa-mail-forward btn btn-lg btn-success">  Generate  </button>
                                     </a>
+                                    <a href="#" >
+                                        <button class="rounded-left rounded-right fa fa-trash-o btn btn-lg btn-warning">  Reset  </button>
+                                    </a>
                             
                             </form>
                             @endif
