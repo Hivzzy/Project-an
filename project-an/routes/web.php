@@ -47,7 +47,7 @@ Route::middleware(['auth', 'auth.session', ])->group(function(){
     //Data Karyawan
     Route::get('/data', [UserController::class, 'index'])->name('show.data');
     Route::POST('/upload', [PayrollController::class, 'uploadExcel'])->name('upload.file');
-    Route::get('/sendMail', [SendEmailController::class, 'index']);
+    Route::get('/sendMail', [SendEmailController::class, 'index'])->name('sendEmail');
 
     //Slip Gaji
     Route::get('/generatepdf', [UserController::class, 'generatepdf'])->name('user.pdf');

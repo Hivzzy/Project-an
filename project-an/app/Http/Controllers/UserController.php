@@ -9,17 +9,19 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\RoleModel;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $data = Payroll::all();
 
         return view('pages.data', ['data' => $data]);
-
     }
 
-    public function indexAkun(){
+    public function indexAkun()
+    {
 
         $user = new UserModel();
         $data = $user->getUser();
@@ -76,13 +78,15 @@ class UserController extends Controller
         }
     }
 
-    public function viewPdf(){
+    public function viewPdf()
+    {
+        $data_payroll = Payroll::all()->first();
+        
+        $pdf = Pdf::loadView('pages.invoice', compact('data_payroll'));
+        $content = $pdf->download()->getOriginalContent();
+        $path = 'public/invoice/' . $data_payroll->id . '.pdf';
+        Storage::disk('local')->put($path, $content);
 
-        $data = ['name' => 'Gaji Karyawan'];
-        $pdf = Pdf::loadView('pages.invoice', compact('data'));
-        return $pdf ->stream('invoice.pdf');
+        return $pdf->stream('invoice.pdf');
     }
-
-
-
 }
