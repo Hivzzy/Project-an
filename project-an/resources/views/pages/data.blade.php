@@ -32,21 +32,25 @@
                         <div class="card-header">
                             <strong class="card-title">Data Table</strong>
                             @if (Auth::user()->role_id != 1)
-                           
-                            <form action="{{ route('upload.file') }}" method="POST" enctype="multipart/form-data">
-                                @csrf
-                                <input class="col-md-2 offset-md-7 col-sm-2" type="file" name="file">
-                                <button type="submit" name="submit" class="rounded-left rounded-right fa fa-upload btn btn-lg btn-primary">  Upload  </button>
-                                    <a href="#" >
-                                        <button class="rounded-left rounded-right fa fa-mail-forward btn btn-lg btn-success">  Generate  </button>
+                                <form action="{{ route('upload.file') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <input class="col-md-2 offset-md-7 col-sm-2" type="file" name="file">
+                                    <button type="submit" name="submit"
+                                        class="rounded-left rounded-right fa fa-upload btn btn-lg btn-primary"> Upload
+                                    </button>
+                                    <a href="{{ route('sendEmail') }}">
+                                        <button
+                                            class="rounded-left rounded-right fa fa-mail-forward btn btn-lg btn-success">
+                                            Generate </button>
                                     </a>
-                                    <a href="#" >
-                                        <button class="rounded-left rounded-right fa fa-trash-o btn btn-lg btn-warning">  Reset  </button>
+                                    <a href="#">
+                                        <button class="rounded-left rounded-right fa fa-trash-o btn btn-lg btn-warning">
+                                            Reset </button>
                                     </a>
-                            
-                            </form>
+
+                                </form>
                             @endif
-                            
+
 
                         </div>
                         <div class="card-body">
@@ -72,12 +76,14 @@
                                             <td>{{ $row->nama_karyawan }}</td>
                                             <td>{{ $row->jabatan }}</td>
                                             <td>{{ $row->hari_kerja }}</td>
-                                            <td>Rp {{ number_format($row->gaji_perhari, 0, ',')  }}</td>
-                                            <td>RP {{ number_format($row->gaji_kotor, 0, ',')  }}</td>
-                                            <td>RP {{ number_format($row->tambahan, 0, ',')  }}</td>
-                                            <td>RP {{ number_format($row->kasbon, 0, ',')  }}</td>
-                                            <td>RP {{ number_format($row->gaji_bersih, 0, ',')  }}</td>
-                                            <td><a href="/viewpdf" class="ml-2"><button class="rounded-left rounded-right fa fa-eye btn btn-lg btn-primary">   Preview   </button></a></td>
+                                            <td>Rp {{ number_format($row->gaji_perhari, 0, ',') }}</td>
+                                            <td>RP {{ number_format($row->gaji_kotor, 0, ',') }}</td>
+                                            <td>RP {{ number_format($row->tambahan, 0, ',') }}</td>
+                                            <td>RP {{ number_format($row->kasbon, 0, ',') }}</td>
+                                            <td>RP {{ number_format($row->gaji_bersih, 0, ',') }}</td>
+                                            <td><a href="/viewpdf" class="ml-2"><button
+                                                        class="rounded-left rounded-right fa fa-eye btn btn-lg btn-primary">
+                                                        Preview </button></a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>
