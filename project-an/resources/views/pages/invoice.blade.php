@@ -43,11 +43,11 @@
             width: 150px;
         }
 
-        h1 {
+        h2 {
             border-top: 1px solid #5D6975;
             border-bottom: 1px solid #5D6975;
             color: #5D6975;
-            font-size: 2.4em;
+            font-size: 2.0em;
             line-height: 1.4em;
             font-weight: normal;
             text-align: center;
@@ -151,20 +151,17 @@
         <div id="logo">
             <img src="./image/logo.jpeg">
         </div>
-        <h1>SALARIES</h1>
+        <h2 class="">PAYROLL SHEET</h2>
         <div id="company" class="clearfix">
-            <div>Cihampelas Hotel</div>
-            <div>455 Foggy Heights,<br /> AZ 85004, US</div>
-            <div>(602) 519-0450</div>
-            <div><a href="mailto:company@example.com">company@example.com</a></div>
+            <div>&nbsp;</div>
+            <div><b>SALARIES</b></div>
+            <div>Periode 10 Des 22  - 09 Jan 2023</div>
         </div>
         <div id="project">
             {{-- <div><span>PROJECT</span> Website development</div> --}}
-            <div><span>Nama</span> John Doe</div>
-            <div><span>Jabatan</span> Front Desk</div>
-            <div><span>EMAIL</span> <a href="mailto:john@example.com">john@example.com</a></div>
-            <div><span>DATE</span> August 17, 2015</div>
-            <div><span>DUE DATE</span> September 17, 2015</div>
+            <div><span>Nama</span>{{ $data_payroll->nama_karyawan }}</div>
+            <div><span>Jabatan</span>{{ $data_payroll->jabatan }}</div>
+            <div><span>Email</span><a href="mailto:{{ $data_payroll->email }}">{{ $data_payroll->email }}</a></div>
         </div>
     </header>
     <main>
@@ -173,47 +170,48 @@
                 <tr>
                     <th class="service">Keterangan</th>
                     {{-- <th class="desc">DESCRIPTION</th> --}}
-                    <th colspan="1">PRICE</th>
+                    <th colspan="1"></th>
                     <th class="service">Potongan</th>
-                    <th>PRICE</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td class="service">Gaji Per Hari</td>
-                    <td class="unit">$40.00</td>
+                    <td class="unit">Rp {{ number_format($data_payroll->gaji_perhari, 0, ',') }}</td>
                     <td class="service">Kasbon</td>
-                    <td class="unit">$1,040.00</td>
+                    <td class="unit">Rp {{ number_format($data_payroll->kasbon, 0, ',') }}</td>
                     <td class="unit"></td>
                 </tr>
                 <tr>
                     <td class="service">Hari kerja</td>
-                    <td class="qty">14</td>
+                    <td class="qty">{{ $data_payroll->hari_kerja }}</td>
                 </tr>
                 <tr>
                     <td class="service">Lembur</td>
-                    <td class="qty">14</td>
+                    <td class="qty">Rp {{ number_format($data_payroll->tambahan, 0, ',') }}</td>
                     <td class="qty"></td>
                     <td class="qty"></td>
                     <td class="qty"></td>
                 </tr>
 
                 <tr>
-                    <td>SUBTOTAL</td>
-                    <td class="total">$5,200.00</td>
-                    <td>SUBTOTAL</td>
-                    <td class="total">$1,300.00</td>
-                </tr>
-                <tr>
-                    <td>SISA HUTANG</td>
-                    <td class="total">$1,300.00</td>
-                    <td></td>
-                    <td></td>
+                    <td class="service">Total Pendapatan</td>
+                    <td class="total">Rp {{ number_format($data_payroll->gaji_kotor, 0, ',') }}</td>
+                    <td class="service">Total Potongan</td>
+                    <td class="total">Rp {{ number_format($data_payroll->kasbon, 0, ',') }}</td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td colspan="4" class="grand total">GRAND TOTAL</td>
-                    <td class="grand total">$6,500.00</td>
+                    <td class="service">Sisa Hutang</td>
+                    <td class="total">Rp {{ number_format(0, 0, ',') }}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="grand total">Terima Bersih</td>
+                    <td class="grand total">Rp {{ number_format($data_payroll->gaji_bersih, 0, ',') }}</td>
                 </tr>
             </tbody>
         </table>

@@ -11,6 +11,9 @@ class Payroll extends Model
 
     protected $table = "daftar_gaji";
     protected $primary_key = "id";
+    protected $casts = [
+        'id' => 'string'
+    ];
     protected $fillable = [
         'id',
         'nama_karyawan',
