@@ -33,7 +33,7 @@ Route::redirect('/', 'login');
 Route::get('login', [AuthController::class, 'userLogin'])->name('login');
 Route::post('/user/login', [AuthController::class, 'authenticate']);
 
-Route::middleware(['auth', 'auth.session'])->group(function(){
+Route::middleware(['auth', 'auth.session', ])->group(function(){
     //Dashboard
     
     Route::get('/dashboard', [AuthController::class, 'dashboard']);

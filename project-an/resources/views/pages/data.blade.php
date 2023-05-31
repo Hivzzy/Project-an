@@ -32,10 +32,15 @@
                         <div class="card-header">
                             <strong class="card-title">Data Table</strong>
                             @if (Auth::user()->role_id != 1)
+                           
                             <form action="{{ route('upload.file') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <input class="col-md-2 offset-md-6 col-sm-4" type="file" name="file">
-                                <button type="submit" name="submit" class="btn btn-primary">Upload</button>
+                                <input class="col-md-2 offset-md-8 col-sm-2" type="file" name="file">
+                                <button type="submit" name="submit" class="rounded-left rounded-right fa fa-upload btn btn-lg btn-primary">  Upload  </button>
+                                    <a href="#" >
+                                        <button class="rounded-left rounded-right fa fa-mail-forward btn btn-lg btn-success">  Generate  </button>
+                                    </a>
+                            
                             </form>
                             @endif
                             
@@ -54,7 +59,7 @@
                                         <th>Addition</th>
                                         <th>Fee</th>
                                         <th>Total Payments</th>
-                                        <th>Action</th>
+                                        <th> Action </th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -64,12 +69,12 @@
                                             <td>{{ $row->nama_karyawan }}</td>
                                             <td>{{ $row->jabatan }}</td>
                                             <td>{{ $row->hari_kerja }}</td>
-                                            <td>{{ $row->gaji_perhari }}</td>
-                                            <td>{{ $row->gaji_kotor }}</td>
-                                            <td>{{ $row->tambahan }}</td>
-                                            <td>{{ $row->kasbon }}</td>
-                                            <td>{{ $row->gaji_bersih }}</td>
-                                            <td><a href="/viewpdf"><button class="btn btn-primary">Preview</button></a></td>
+                                            <td>Rp {{ number_format($row->gaji_perhari, 0, ',')  }}</td>
+                                            <td>RP {{ number_format($row->gaji_kotor, 0, ',')  }}</td>
+                                            <td>RP {{ number_format($row->tambahan, 0, ',')  }}</td>
+                                            <td>RP {{ number_format($row->kasbon, 0, ',')  }}</td>
+                                            <td>RP {{ number_format($row->gaji_bersih, 0, ',')  }}</td>
+                                            <td><a href="/viewpdf" class="ml-2"><button class="rounded-left rounded-right fa fa-eye btn btn-lg btn-primary">   Preview   </button></a></td>
                                         </tr>
                                     @endforeach
                                 </tbody>

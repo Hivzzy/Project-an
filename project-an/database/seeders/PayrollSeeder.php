@@ -27,5 +27,17 @@ class PayrollSeeder extends Seeder
             'kasbon' => 200000,
             'gaji_bersih' => 3060000,
         ]);
+        Payroll::create([
+            'id' => Uuid::uuid4()->toString(),
+            'nama_karyawan' => 'Irfan Petrio Nugroho',
+            'email' => 'pertrio15@gmail.com',
+            'jabatan' => 'Accounting',
+            'hari_kerja' => 23,
+            'gaji_perhari' => 120000,
+            'gaji_kotor' => 2760000,
+            'tambahan' => 500000,
+            'kasbon' => 200000,
+            'gaji_bersih' => 3060000,
+        ]);
     }
 }

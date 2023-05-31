@@ -54,11 +54,10 @@
                                             @if (Auth::user()->role_id != 2)
                                             <td>
                                                 <a href="/akun/edit/{{ $user->id }}">
-                                                    <button class="btn btn-warning">Edit</button>
+                                                    <button class="rounded-left rounded-right btn btn-warning">Edit</button>
                                                 </a>
                                             </td>
                                             @endif
-                                            
                                         </tr>
                                     @endforeach
                                 </tbody>

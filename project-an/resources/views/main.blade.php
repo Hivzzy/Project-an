@@ -42,11 +42,14 @@
                         <a href="{{ url('/dashboard') }}"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                     </li>
                     <li>
-                        <a href="{{ url('/data') }}"> <i class="menu-icon fa fa-puzzle-piece"></i>Data Karyawan </a>
+                        <a href="{{ url('/data') }}"> <i class="menu-icon fa fa-group"></i>Data Karyawan </a>
                     </li>
+                    @if (Auth::user()->role_id != 2)
                     <li>
-                        <a href="{{ url('/akun') }}"> <i class="menu-icon fa fa-puzzle-piece"></i>Kelola Akun </a>
-                    </li>
+                        <a href="{{ url('/akun') }}"> <i class="menu-icon ti ti-user"></i>Kelola Akun </a>
+                    </li>    
+                    @endif
+                    
                     
                 </ul>
             </div><!-- /.navbar-collapse -->
@@ -71,7 +74,7 @@
                     <div class="language-select dropdown" id="language-select">
                         <form action="/user/logout" method="POST">
                             @csrf
-                            <button class="menu-icon fa fa-puzzle-piece btn btn-primary""> Keluar</button>
+                            <button class="menu-icon rounded-left rounded-right fa fa-sign-out btn btn-primary"> Keluar</button>
                             </form>
                     </div>
 
