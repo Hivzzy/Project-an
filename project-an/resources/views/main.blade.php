@@ -79,11 +79,9 @@
 
                 </div>
             </div>
-            
 
         </header><!-- /header -->
-        @yield('alert')
-        
+
         @yield('breadcrumbs')
 
         @yield('content')
