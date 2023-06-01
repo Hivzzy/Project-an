@@ -18,6 +18,10 @@ class PayrollController extends Controller
     public function uploadExcel(Request $request)
     {
         if ($request->hasFile('file')) {
+            // if (!$request instanceof \PhpOffice\PhpSpreadsheet\Spreadsheet) {
+            //     return redirect()->route('show.data')->with('failed', '<strong>FORMAT FILE SALAH</strong>, masukkan format file excel/xlsx.');
+            // }
+            echo 'File tidak valid. Format file harus .xlsx.';
             $publicPath = public_path('/file_payroll/' . null);
             $hasFiles = File::exists($publicPath);
             if ($hasFiles) {
@@ -32,7 +36,7 @@ class PayrollController extends Controller
             $sheetNames = $spreadsheet->getSheetNames();
 
             if (!in_array($sheetName, $sheetNames)) {
-                return 'Lembar kerja tidak ditemukan.';
+                return redirect()->route('show.data')->with('failed', '<strong>SHEET PAYROLL TIDAK TERSEDIA</strong>, masukkan file yang benar.');
             }
 
             $sheet = $spreadsheet->getSheetByName($sheetName);
@@ -40,6 +44,9 @@ class PayrollController extends Controller
             $csvData = '';
 
             if (is_array($data)) {
+                if ($data[5][1] === null) {
+                    return redirect()->route('show.data')->with('failed', '<strong>DATA SHEET PAYROLL KOSONG</strong>, masukkan file yang benar.');
+                }
                 $numRows = count($data);
                 $numColumns = count($data[0]);
 
@@ -70,7 +77,7 @@ class PayrollController extends Controller
             (new PayrollInfo)->import(public_path('/file_payroll/' . $nama_file_asli), null, \Maatwebsite\Excel\Excel::CSV);
             return redirect()->route('show.data');
         } else {
-            return redirect()->route('show.data')->with('failed', 'Format sheet <strong>PAYROLL</strong> yang Anda masukkan salah.');
+            return redirect()->route('show.data')->with('failed', '<strong>FILE TIDAK BOLEH KOSONG</strong>, silahkan pillih file terlebih dahulu.');
         }
     }
 
@@ -144,21 +151,21 @@ class PayrollInfo implements ToModel, WithMappedCells
     public function model(array $row)
     {
         $data = PayrollInfo::valueTotal();
-        $tot_gaji_perhari = $data[0];
-        $tot_gaji_kotor = $data[1];
-        $tot_tambahan = $data[2];
-        $tot_kasbon = $data[3];
-        $tot_gaji_bersih = $data[4];
+        $tot_gaji_perhari   = $data[0];
+        $tot_gaji_kotor     = $data[1];
+        $tot_tambahan       = $data[2];
+        $tot_kasbon         = $data[3];
+        $tot_gaji_bersih    = $data[4];
 
         $periode = strstr($row['periode'], "PERIODE");
 
         return new MonthlyReport([
-            'periode' => $periode,
-            'tot_gaji_perhari' => $tot_gaji_perhari,
-            'tot_gaji_kotor' => $tot_gaji_kotor,
-            'tot_tambahan' => $tot_tambahan,
-            'tot_kasbon' => $tot_kasbon,
-            'tot_gaji_bersih' => $tot_gaji_bersih,
+            'periode'           => $periode,
+            'tot_gaji_perhari'  => $tot_gaji_perhari,
+            'tot_gaji_kotor'    => $tot_gaji_kotor,
+            'tot_tambahan'      => $tot_tambahan,
+            'tot_kasbon'        => $tot_kasbon,
+            'tot_gaji_bersih'   => $tot_gaji_bersih,
         ]);
     }
 }

@@ -46,9 +46,9 @@ class SendEmailController extends Controller
                 Mail::to($myPayroll->email)->send(new MyTestMail($details, $myPayroll, $periode));
             }
 
-            return redirect()->route('show.data')->with('success', 'Payroll <strong>BERHASIL</strong> terkirim, silahkan reset data untuk menghapus semua data (optional) demi keamanan.');
+            return redirect()->route('show.data')->with('success', '<strong>PAYROLL BERHASIL TERKIRIM</strong>, silahkan reset data untuk menghapus semua data demi keamanan. (optional)');
         } else {
-            return redirect()->route('show.data')->with('failed', '<strong>Upload File Excel</strong> terlebih dahulu untuk melakukan Send to Email.');
+            return redirect()->route('show.data')->with('failed', '<strong>MOHON UPLOAD FILE</strong> terlebih dahulu untuk melakukan Send to Email.');
         }
     }
 

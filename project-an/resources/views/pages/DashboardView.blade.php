@@ -47,7 +47,7 @@
                     <div class="card col-md-6 no-padding ">
                         <div class="card-body">
                             <div class="h1 text-muted text-right mb-4">
-                                <i class="fa fa-users"></i>
+                                <i class="ti ti-time"></i>
                             </div>
 
                             <small class="text-muted text-uppercase font-weight-bold">Total gaji perhari</small>
@@ -66,7 +66,7 @@
                     <div class="card col-md-6 no-padding ">
                         <div class="card-body">
                             <div class="h1 text-muted text-right mb-4">
-                                <i class="fa fa-user-plus"></i>
+                                <i class="ti ti-layers-alt"></i>
                             </div>
 
                             <small class="text-muted text-uppercase font-weight-bold">Total</small>
@@ -84,7 +84,7 @@
                     <div class="card col-md-6 no-padding ">
                         <div class="card-body">
                             <div class="h1 text-muted text-right mb-4">
-                                <i class="fa fa-cart-plus"></i>
+                                <i class="ti ti-stats-up"></i>
                             </div>
 
                             <small class="text-muted text-uppercase font-weight-bold">Total Tambahan</small>
@@ -102,7 +102,7 @@
                     <div class="card col-md-6 no-padding ">
                         <div class="card-body">
                             <div class="h1 text-muted text-right mb-4">
-                                <i class="fa fa-pie-chart"></i>
+                                <i class="ti ti-stats-down"></i>
                             </div>
 
                             <small class="text-muted text-uppercase font-weight-bold">Total kasbon</small>
@@ -120,7 +120,7 @@
                     <div class="card col-md-6 no-padding ">
                         <div class="card-body">
                             <div class="h1 text-muted text-right mb-4">
-                                <i class="fa fa-clock-o"></i>
+                                <i class="fa fa-money"></i>
                             </div>
 
                             <small class="text-muted text-uppercase font-weight-bold">Total yang Diterima</small>

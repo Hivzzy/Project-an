@@ -15,7 +15,7 @@
             <div class="page-header float-right">
                 <div class="page-title">
                     <ol class="breadcrumb text-right">
-                        <li class="active"><i class="fa fa-dashboard"></i></li>
+                        <li class="active"><i class="fa fa-users"></i></li>
                     </ol>
                 </div>
             </div>
@@ -29,6 +29,15 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
+                        @if (session()->has('failed'))
+                            <div class="alert alert-danger">
+                                {!! html_entity_decode(session()->get('failed')) !!}
+                            </div>
+                        @elseif (session()->has('success'))
+                            <div class="alert alert-success">
+                                {!! html_entity_decode(session()->get('success')) !!}
+                            </div>
+                        @endif
                         <div class="card-header row">
                             <strong class="card-title ml-4">Import Laporan</strong>
                             @if (Auth::user()->role_id != 1)
@@ -41,15 +50,6 @@
                                         <i class="fa fa-upload fa-">&nbsp;</i>
                                         Upload
                                     </button>
-                                    @if (session()->has('failed'))
-                                        <div class="alert alert-danger">
-                                            {!! html_entity_decode(session()->get('failed')) !!}
-                                        </div>
-                                    @elseif (session()->has('success'))
-                                        <div class="alert alert-success">
-                                            {!! html_entity_decode(session()->get('success')) !!}
-                                        </div>
-                                    @endif
                                 </form>
                                 @if ($data->isEmpty())
                                     <a href="{{ route('sendEmail') }}">
@@ -107,15 +107,18 @@
                                             <td>{{ $row->jabatan }}</td>
                                             <td>{{ $row->hari_kerja }}</td>
                                             <td>Rp {{ number_format($row->gaji_perhari, 0, ',', '.') }}</td>
-                                            <td>RP {{ number_format($row->gaji_kotor, 0, ',', '.') }}</td>
-                                            <td>RP {{ number_format($row->tambahan, 0, ',', '.') }}</td>
-                                            <td>RP {{ number_format($row->kasbon, 0, ',', '.') }}</td>
-                                            <td>RP <b>{{ number_format($row->gaji_bersih, 0, ',', '.') }}</b></td>
-                                            <td><a href="/viewpdf/{{ $row->id }}" class="ml-2"><button
-                                                        class="rounded-left rounded-right btn btn-xs my-button"
+                                            <td>Rp {{ number_format($row->gaji_kotor, 0, ',', '.') }}</td>
+                                            <td>Rp {{ number_format($row->tambahan, 0, ',', '.') }}</td>
+                                            <td>Rp {{ number_format($row->kasbon, 0, ',', '.') }}</td>
+                                            <td><b> Rp {{ number_format($row->gaji_bersih, 0, ',', '.') }}</b></td>
+                                            <td><a href="/viewpdf/{{ $row->id }}" class="ml-2">
+                                                    <button class="rounded-left rounded-right btn btn-xs"
                                                         style="background-color: #F5B52D; color: #000000;">
                                                         <i class="fa fa-eye">&nbsp;</i>
-                                                        Preview </button></a></td>
+                                                        Preview
+                                                    </button>
+                                                </a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
