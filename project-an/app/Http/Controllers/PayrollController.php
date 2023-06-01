@@ -59,7 +59,7 @@ class PayrollController extends Controller
             (new DaftarGaji)->import(public_path('/file_payroll/' . $nama_file_asli), null, \Maatwebsite\Excel\Excel::CSV);
             return redirect()->route('show.data');
         } else {
-            // return redirect()->back()->withInput()->withErrors(['error' => 'Data tidak boleh kosong.']);
+            return redirect()->back()->withInput()->withErrors(['error' => 'Data tidak boleh kosong.']);
         }
     }
 }

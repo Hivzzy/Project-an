@@ -16,8 +16,8 @@ class UserController extends Controller
     public function index()
     {
         $data = Payroll::all();
-
         return view('pages.data', ['data' => $data]);
+
     }
 
     public function indexAkun()

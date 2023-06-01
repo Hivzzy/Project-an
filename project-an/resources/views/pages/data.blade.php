@@ -23,32 +23,56 @@
     </div>
 @endsection
 
+@section('alert')
+@error('status')
+<div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
+    <span class="badge badge-pill badge-success">Success</span>
+        {{ $message }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+@enderror
+@endsection
+
 @section('content')
     <div class="content mt-3">
         <div class="animated fadeIn">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header">
+                        <div class="card-header row">
                             <strong class="card-title">Data Table</strong>
                             @if (Auth::user()->role_id != 1)
-                                <form action="{{ route('upload.file') }}" method="POST" enctype="multipart/form-data">
+                            
+                                <form class="offset-md-4"  action="{{ route('upload.file') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    <input class="col-md-2 offset-md-7 col-sm-2" type="file" name="file">
+                                    <input type="file" name="file">
                                     <button type="submit" name="submit"
                                         class="rounded-left rounded-right fa fa-upload btn btn-lg btn-primary"> Upload
                                     </button>
-                                    <a href="{{ route('sendEmail') }}">
-                                        <button
-                                            class="rounded-left rounded-right fa fa-mail-forward btn btn-lg btn-success">
-                                            Generate </button>
-                                    </a>
-                                    <a href="#">
-                                        <button class="rounded-left rounded-right fa fa-trash-o btn btn-lg btn-warning">
-                                            Reset </button>
-                                    </a>
-
                                 </form>
+                                @if ($data->isEmpty())
+                                <a href="{{ route('sendEmail') }}"> 
+                                    <button
+                                        class="ml-3 rounded-left rounded-right fa fa-mail-forward btn btn-lg btn-success" disabled>
+                                        Generate </button>
+                                </a>
+                                <a href="#">
+                                    <button class="ml-3 rounded-left rounded-right fa fa-trash-o btn btn-lg btn-warning" disabled>
+                                        Reset </button>
+                                </a>
+                                @else
+                                <a href="{{ route('sendEmail') }}"> 
+                                    <button
+                                        class="ml-3 rounded-left rounded-right fa fa-mail-forward btn btn-lg btn-success">
+                                        Generate </button>
+                                </a>
+                                <a href="#">
+                                    <button class="ml-3 rounded-left rounded-right fa fa-trash-o btn btn-lg btn-warning">
+                                        Reset </button>
+                                </a>
+                                @endif
                             @endif
 
 

@@ -18,7 +18,7 @@ class PayrollSeeder extends Seeder
         Payroll::create([
             'id' => Uuid::uuid4()->toString(),
             'nama_karyawan' => 'Irfan',
-            'email' => 'pertrio15@gmail.com',
+            'email' => 'habbanma@gmail.com',
             'jabatan' => 'Accounting',
             'hari_kerja' => 23,
             'gaji_perhari' => 120000,
@@ -30,7 +30,7 @@ class PayrollSeeder extends Seeder
         Payroll::create([
             'id' => Uuid::uuid4()->toString(),
             'nama_karyawan' => 'Irfan Petrio Nugroho',
-            'email' => 'pertrio15@gmail.com',
+            'email' => 'habbanma@gmail.com',
             'jabatan' => 'Accounting',
             'hari_kerja' => 23,
             'gaji_perhari' => 120000,
