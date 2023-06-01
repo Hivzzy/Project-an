@@ -18,10 +18,6 @@ class PayrollController extends Controller
     public function uploadExcel(Request $request)
     {
         if ($request->hasFile('file')) {
-            // if (!$request instanceof \PhpOffice\PhpSpreadsheet\Spreadsheet) {
-            //     return redirect()->route('show.data')->with('failed', '<strong>FORMAT FILE SALAH</strong>, masukkan format file excel/xlsx.');
-            // }
-            echo 'File tidak valid. Format file harus .xlsx.';
             $publicPath = public_path('/file_payroll/' . null);
             $hasFiles = File::exists($publicPath);
             if ($hasFiles) {
@@ -36,7 +32,7 @@ class PayrollController extends Controller
             $sheetNames = $spreadsheet->getSheetNames();
 
             if (!in_array($sheetName, $sheetNames)) {
-                return redirect()->route('show.data')->with('failed', '<strong>SHEET PAYROLL TIDAK TERSEDIA</strong>, masukkan file yang benar.');
+                return redirect()->route('show.data')->with('failed', '<strong>SHEET PAYROLL TIDAK TERSEDIA</strong>, nama sheet harus <strong>PAYROLL</strong>.');
             }
 
             $sheet = $spreadsheet->getSheetByName($sheetName);
@@ -75,9 +71,9 @@ class PayrollController extends Controller
 
             (new DaftarGaji)->import(public_path('/file_payroll/' . $nama_file_asli), null, \Maatwebsite\Excel\Excel::CSV);
             (new PayrollInfo)->import(public_path('/file_payroll/' . $nama_file_asli), null, \Maatwebsite\Excel\Excel::CSV);
-            return redirect()->route('show.data');
+            return redirect()->route('show.data')->with('success', '<strong>DATA EXCEL BERHASIL DI UPLOAD</strong>.');
         } else {
-            return redirect()->route('show.data')->with('failed', '<strong>FILE TIDAK BOLEH KOSONG</strong>, silahkan pillih file terlebih dahulu.');
+            return redirect()->route('show.data')->with('failed', '<strong>FILE TIDAK BOLEH KOSONG</strong>, silahkan pilih file terlebih dahulu.');
         }
     }
 
