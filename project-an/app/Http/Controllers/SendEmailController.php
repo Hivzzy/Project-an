@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Mail\HelloMail;
 use App\Mail\MyTestMail;
+use App\Models\MonthlyReport;
 use App\Models\Payroll;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class SendEmailController extends Controller
 {
@@ -18,30 +21,35 @@ class SendEmailController extends Controller
     public function index()
     {
         $payroll = Payroll::all();
-        // dd($payroll[0]);
-        // $myPayroll = $payroll[0];
-        // Mail::to('ikra8520@gmail.com')->send(new HelloMail("Slip Gaji", $myPayroll));
-        // Mail::to($myPayroll->email)->send(new HelloMail("Slip Gaji", $myPayroll));
-        // Mail::send()
+        $periode = MonthlyReport::first()->periode;
+        if ($payroll != null && $periode != null) {
+            $data = ['name' => 'Gaji Karyawan'];
 
-        ini_set('max_execution_time', 300);
-        foreach ($payroll as $myPayroll) {
-            $path = 'storage/invoice/' . $myPayroll->id . '.pdf';
-            $files = [
-                public_path($path),
-            ];
-            
-            $details = [
-                'title' => 'Slip Gaji Periode',
-                'files' => $files,
-            ];
-            Mail::to($myPayroll->email)->send(new MyTestMail($details, $myPayroll));
+            foreach ($payroll as $data_payroll) {
+                $pdf = Pdf::loadView('pages.invoice', compact('data_payroll', 'periode'));
+                $content = $pdf->download()->getOriginalContent();
+                $path = 'public/invoice/' . $data_payroll->nama_karyawan . '.pdf';
+                Storage::disk('local')->put($path, $content);
+            }
+
+            ini_set('max_execution_time', 300);
+            foreach ($payroll as $myPayroll) {
+                $path = 'storage/invoice/' . $myPayroll->nama_karyawan . '.pdf';
+                $files = [
+                    public_path($path),
+                ];
+
+                $details = [
+                    'title' => 'Slip Gaji Periode',
+                    'files' => $files,
+                ];
+                Mail::to($myPayroll->email)->send(new MyTestMail($details, $myPayroll, $periode));
+            }
+
+            return redirect()->route('show.data')->with('success', 'Payroll <strong>BERHASIL</strong> terkirim, silahkan reset data untuk menghapus semua data (optional) demi keamanan.');
+        } else {
+            return redirect()->route('show.data')->with('failed', '<strong>Upload File Excel</strong> terlebih dahulu untuk melakukan Send to Email.');
         }
-  
-         
-         
-        dd("Email is Sent.");
-    
     }
 
     /**

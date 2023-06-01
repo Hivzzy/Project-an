@@ -15,7 +15,8 @@
     <link rel="stylesheet" href="{{ asset('style/assets/css/flag-icon.min.css') }}">
     <link rel="stylesheet" href="{{ asset('style/assets/css/cs-skin-elastic.css') }}">
     <link rel="stylesheet" href="{{ asset('style/assets/scss/style.css') }}">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ asset('style/assets/css/items.css') }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" type="text/css">
 </head>
 
 <body>
@@ -32,11 +33,11 @@
                     aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="">CIHAMPELAS HOTEL GROUP</a>
+                <a class="navbar-brand" style="background-color: #F5B52D; color:#0B0702">CIHAMPELAS HOTEL GROUP</a>
                 <a class="navbar-brand hidden" href="">M</a>
             </div>
 
-            <div id="main-menu" class="main-menu collapse navbar-collapse">
+            <div id="main-menu" class="main-menu collapse navbar-collapse" style="background-color: #F5B52D">
                 <ul class="nav navbar-nav">
                     <li>
                         <a href="{{ url('/dashboard') }}"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
@@ -45,12 +46,12 @@
                         <a href="{{ url('/data') }}"> <i class="menu-icon fa fa-group"></i>Data Karyawan </a>
                     </li>
                     @if (Auth::user()->role_id != 2)
-                    <li>
-                        <a href="{{ url('/akun') }}"> <i class="menu-icon ti ti-user"></i>Kelola Akun </a>
-                    </li>    
+                        <li>
+                            <a href="{{ url('/akun') }}"> <i class="menu-icon ti ti-user"></i>Kelola Akun </a>
+                        </li>
                     @endif
-                    
-                    
+
+
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
@@ -65,17 +66,15 @@
 
                 <div class="col-sm-5">
                     <div class="user-area dropdown float-right">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
-                            <img class="user-avatar rounded-circle" src="{{ asset('style/images/admin.jpg') }}">
-                        </a>
                     </div>
 
                     <div class="language-select dropdown" id="language-select">
                         <form action="/user/logout" method="POST">
                             @csrf
-                            <button class="menu-icon rounded-left rounded-right fa fa-sign-out btn btn-primary"> Keluar</button>
-                            </form>
+                            <button class="menu-icon rounded-left rounded-right btn btn-danger btn-xs">
+                                <i class="fa fa-sign-out">&nbsp;</i>
+                                Keluar</button>
+                        </form>
                     </div>
 
                 </div>

@@ -33,10 +33,10 @@ Route::redirect('/', 'login');
 Route::get('login', [AuthController::class, 'userLogin'])->name('login');
 Route::post('/user/login', [AuthController::class, 'authenticate']);
 
-Route::middleware(['auth', 'auth.session', ])->group(function(){
+Route::middleware(['auth', 'auth.session',])->group(function () {
     //Dashboard
-    
-    Route::get('/dashboard', [AuthController::class, 'dashboard']);
+
+    Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
     Route::post('user/logout', [AuthController::class, 'logout']);
 
     //Kelola Akun
@@ -51,12 +51,8 @@ Route::middleware(['auth', 'auth.session', ])->group(function(){
 
     //Slip Gaji
     Route::get('/generatepdf', [UserController::class, 'generatepdf'])->name('user.pdf');
-    Route::get('/viewpdf', [UserController::class, 'viewPdf']);
+    Route::get('/viewpdf/{id}', [UserController::class, 'viewPdf']);
     Route::get('/test', [AuthController::class, 'viewslip']);
-    
 
+    Route::get('/resetdata', [PayrollController::class, 'resetData'])->name('reset.data');
 });
-
-
-
-

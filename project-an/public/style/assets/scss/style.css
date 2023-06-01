@@ -825,7 +825,7 @@ textarea {
   width: 100%; }
 
 aside.left-panel {
-  background: #272c33;
+  background: #F5B52D;
   display: table-cell;
   height: 100vh;
   min-height: 100%;
@@ -848,7 +848,7 @@ aside.left-panel {
     width: 100%; }
   .navbar .navbar-brand {
     border-bottom: 1px solid #4e4e52;
-    color: #f1f2f7 !important;
+    color: #0B0702;
     font-family: 'Open Sans';
     font-size: 22px;
     float: none;
@@ -868,14 +868,16 @@ aside.left-panel {
     .navbar .navbar-brand img {
       max-width: 160px; }
     .navbar .navbar-brand.hidden {
-      display: none; }
+      display: none;
+      background-color: #F5B52D; 
+      color: #F5B52D;}
   .navbar .menu-title {
     border-bottom: 1px solid #4e4e52;
-    color: #9496a1;
+    color: #0B0702;
     clear: both;
     display: block;
     font-family: 'Open Sans';
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 700;
     line-height: 50px;
     padding: 15px 0 0 0;
@@ -893,10 +895,10 @@ aside.left-panel {
         display: none; }
       .navbar .navbar-nav li > a {
         background: none !important;
-        color: #c8c9ce !important;
+        color: #0B0702 !important;
         display: inline-block;
         font-family: 'Open Sans';
-        font-size: 14px;
+        font-size: 16px;
         line-height: 30px;
         padding: 10px 0;
         position: relative;
@@ -904,7 +906,7 @@ aside.left-panel {
         .navbar .navbar-nav li > a:hover, .navbar .navbar-nav li > a:hover .menu-icon {
           color: #fff !important; }
         .navbar .navbar-nav li > a .menu-icon {
-          color: #8b939b;
+          color: #0B0702;
           float: left;
           margin-top: 8px;
           width: 55px;
@@ -940,7 +942,7 @@ aside.left-panel {
           .navbar .navbar-nav li.menu-item-has-children a:hover:before {
             color: #fff; }
         .navbar .navbar-nav li.menu-item-has-children .sub-menu {
-          background: #272c33;
+          background: #F5B52D;
           border: none;
           box-shadow: none;
           overflow-y: hidden;
@@ -948,7 +950,7 @@ aside.left-panel {
           .navbar .navbar-nav li.menu-item-has-children .sub-menu li {
             position: relative; }
           .navbar .navbar-nav li.menu-item-has-children .sub-menu i {
-            color: #c8c9ce;
+            color: #0B0702;
             float: left;
             padding: 0;
             position: absolute;

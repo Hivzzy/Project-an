@@ -23,10 +23,11 @@ class HelloMail extends Mailable
      *
      * @return void
      */
-    public function __construct(String $subject, Payroll $payroll)
+    public function __construct(String $subject, Payroll $payroll, String $periode)
     {
         $this->subject = $subject;
         $this->payroll = $payroll;
+        $this->periode = $periode;
         // dd($this->payroll);
     }
 
@@ -51,7 +52,7 @@ class HelloMail extends Mailable
     {
         return new Content(
             view: 'mail.hello',
-            with: [$this->payroll],
+            with: [$this->payroll, $this->periode],
         );
     }
 

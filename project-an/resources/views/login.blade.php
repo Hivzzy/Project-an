@@ -17,7 +17,8 @@
         }
 
         body {
-            background: rgb(61, 121, 121)
+            background: #f9eed8;
+            backdrop-filter: blur(20px);
         }
 
         .row {
@@ -29,46 +30,52 @@
             border-top-left-radius: 30px;
             border-bottom-left-radius: 30px;
         }
+
         .btn1 {
             border: none;
             outline: none;
             height: 50px;
-            width :100%;
+            width: 100%;
             background-color: black;
             color: white;
             border-radius: 4px;
             font-weight: bold;
         }
+
         .btn1:hover {
             background-color: white;
             border: 1px solid;
             color: black
-
         }
     </style>
 </head>
 
 <body>
-    <section class="Form my-5 mx-5">
+    <section style="
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;">
         <div class="container">
             <div class="row no-gutters">
                 <div class="col-lg-5">
-                    <img src="https://images.unsplash.com/photo-1677530248517-ee23fb4150ae?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80    "
-                        class="img-fluid " alt="Unsplash">
+                    <img src="image/logo_perusahaan.jpg" class="img-fluid " alt="Unsplash">
                 </div>
                 <div class="col-lg-7 px-5 pt-5">
-                    <h1 class="font-weight-bold py-3">Welcome to my Website</h1>
+                    <h1 class="font-weight-bold py-3">Welcome</h1>
                     <h4 class="col-lg-7">Login</h4>
                     <form method="post" action="/user/login">
                         @csrf
                         <div class="row no-gutters col-lg-7">
-                            <input id="username" name="username" class="form-control my-4 p-2" type="text" name="" placeholder="Username">
+                            <input id="username" name="username" class="form-control my-4 p-2" type="text"
+                                name="" placeholder="Username">
                         </div>
                         <div class="row no-gutters col-lg-7">
-                            <input id="password" name="password" class="form-control mb-4 p-2" type="password" name="" placeholder="******">
+                            <input id="password" name="password" class="form-control mb-4 p-2" type="password"
+                                name="" placeholder="******">
                         </div>
                         @error('username')
-                        <div id="error" class="row no-gutters col-lg-7">{{ $message }}</div>
+                            <div id="error" class="row no-gutters col-lg-7">{{ $message }}</div>
                         @enderror
                         <div class="col-lg-7">
                             <button class="btn1 mt-3 mb-5 " type="submit">Login</button>
