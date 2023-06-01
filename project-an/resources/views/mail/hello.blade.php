@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Slip Gaji (Periode)</title>
+    <title>Slip Gaji {{ $periode }}</title>
 </head>
 
 <body>
     <div class="container">
-        <h1 class="h1">Slip Gaji (Periode)</h1>
+        <h1 class="h1">Slip Gaji {{ $periode }}</h1>
         <p class="p">
             Salam hangat, saya berharap Anda dalam keadaan baik. Saya ingin menginformasikan bahwa slip
-            gaji Anda untuk (periode bulan Mei 2023) sudah siap dan terlampir dalam email ini.
+            gaji Anda untuk {{ $periode }} sudah siap dan terlampir dalam email ini.
         </p>
         <p class="p">
-            Berikut ini adalah rincian gaji Anda untuk bulan Mei 2023:
+            Berikut ini adalah rincian gaji Anda:
         </p>
         <ol>
             <li>
@@ -41,10 +41,10 @@
             Salam hormat,
         </p>
         <p>
-            [Nama Anda]
+            Dedi Kurnia
         </p>
         <p>
-            [Jabatan Anda]
+            Accounting
         </p>
         <p>
             Cihampelas Hotel

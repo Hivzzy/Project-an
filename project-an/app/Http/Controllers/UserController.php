@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MonthlyReport;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\Payroll;
 use App\Models\UserModel;
@@ -78,11 +79,11 @@ class UserController extends Controller
         }
     }
 
-    public function viewPdf()
+    public function viewPdf($id)
     {
-        $data_payroll = Payroll::all()->first();
-        
-        $pdf = Pdf::loadView('pages.invoice', compact('data_payroll'));
+        $data_payroll = Payroll::find($id);
+        $periode = MonthlyReport::first()->periode;
+        $pdf = Pdf::loadView('pages.invoice', compact('data_payroll', 'periode'));
         $content = $pdf->download()->getOriginalContent();
         $path = 'public/invoice/' . $data_payroll->id . '.pdf';
         Storage::disk('local')->put($path, $content);

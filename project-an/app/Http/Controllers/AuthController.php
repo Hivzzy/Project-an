@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MonthlyReport;
+use App\Models\Payroll;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,17 +18,20 @@ class AuthController extends Controller
 
     public function dashboard()
     {
-
-
+        $monthlyInformation = MonthlyReport::all();
+        // dd($monthlyInformation);
+        $summaryEmployees = Payroll::count();
         return view('pages.DashboardView', [
-            'title' => 'Dashboard',
-            'active' => 'dashboard',
+            'title'     => 'Dashboard',
+            'active'    => 'dashboard',
+            'data'      => $monthlyInformation,
+            'sum'       => $summaryEmployees,
         ]);
     }
 
     public function authenticate(Request $request)
     {
-        
+
         $credentials = $request->validate([
             'username' => ['required'],
             'password' => ['required'],
@@ -42,7 +47,8 @@ class AuthController extends Controller
         ])->onlyInput('username');
     }
 
-    public function viewslip(){
+    public function viewslip()
+    {
         return view('pages.gaji');
     }
 

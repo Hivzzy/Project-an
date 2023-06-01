@@ -103,7 +103,7 @@
             padding: 14px 32px;
             border: none;
             font-weight: 600;
-            background-color:rgba(8, 57, 110, 0.623);
+            background-color: rgba(8, 57, 110, 0.623);
             color: white;
             cursor: pointer;
         }
@@ -223,28 +223,19 @@
                             @csrf
                             <div class="formbold-mb-5">
                                 <label for="" class="formbold-form-label">Name</label>
-                                <input type="text" name="nama_user" value="{{ $user->name }}" id="" placeholder="Your Name"
-                                    class="formbold-form-input" />
+                                <input type="text" name="nama_user" value="{{ $user->name }}" id="" required
+                                    placeholder="Nama Anda" class="formbold-form-input" />
                             </div>
 
                             <div class="formbold-mb-5">
                                 <label for="username" class="formbold-form-label">Username</label>
-                                <input type="text" name="username" value="{{ $user->username }}" id="" placeholder="Irfan Petrio"
-                                    class="formbold-form-input" />
+                                <input type="text" name="username" value="{{ $user->username }}" id="" required
+                                    placeholder="accounting_account" class="formbold-form-input" />
                             </div>
 
                             <div class="formbold-mb-5">
-                                <label for="message" >Role</label>
-                                <select name="role" id="" class="formbold-form-input">
-                                    <option value="{{ $user->role_id }}">{{ $user->role->role_name }}</option>
-                                    @foreach ($roles as $role)
-                                     <option value="{{ $role->id }}">{{ $role->role_name }}</option>   
-                                    @endforeach
-                                </select>
-                            </div>
-                            <div class="formbold-mb-5">
                                 <label for="password" class="formbold-form-label">Password</label>
-                                <input type="password" name="password" id="" placeholder="*******"
+                                <input type="password" name="password" id="" required placeholder="*******"
                                     class="formbold-form-input" />
                             </div>
 

@@ -13,21 +13,23 @@ use Illuminate\Queue\SerializesModels;
 class MyTestMail extends Mailable
 {
     use Queueable, SerializesModels;
-  
+
     public $details;
     public $payroll;
-  
+    public $periode;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($details, Payroll $payroll)
+    public function __construct($details, Payroll $payroll, $periode)
     {
         $this->details = $details;
         $this->payroll = $payroll;
+        $this->periode = $periode;
     }
-  
+
     /**
      * Build the message.
      *
@@ -36,12 +38,12 @@ class MyTestMail extends Mailable
     public function build()
     {
         $this->subject($this->details['title'])
-                    ->view('mail.hello')->with([$this->payroll]);
-  
-        foreach ($this->details['files'] as $file){
+            ->view('mail.hello')->with([$this->payroll, $this->periode]);
+
+        foreach ($this->details['files'] as $file) {
             $this->attach($file);
         }
-  
+
         return $this;
     }
 }

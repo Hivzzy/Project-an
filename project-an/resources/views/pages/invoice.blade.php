@@ -155,7 +155,7 @@
         <div id="company" class="clearfix">
             <div>&nbsp;</div>
             <div><b>SALARIES</b></div>
-            <div>Periode 10 Des 22  - 09 Jan 2023</div>
+            <div>{{ $periode }}</div>
         </div>
         <div id="project">
             {{-- <div><span>PROJECT</span> Website development</div> --}}
@@ -178,9 +178,9 @@
             <tbody>
                 <tr>
                     <td class="service">Gaji Per Hari</td>
-                    <td class="unit">Rp {{ number_format($data_payroll->gaji_perhari, 0, ',') }}</td>
+                    <td class="unit">Rp {{ number_format($data_payroll->gaji_perhari, 0, ',', '.') }}</td>
                     <td class="service">Kasbon</td>
-                    <td class="unit">Rp {{ number_format($data_payroll->kasbon, 0, ',') }}</td>
+                    <td class="unit">Rp {{ number_format($data_payroll->kasbon, 0, ',', '.') }}</td>
                     <td class="unit"></td>
                 </tr>
                 <tr>
@@ -189,7 +189,7 @@
                 </tr>
                 <tr>
                     <td class="service">Lembur</td>
-                    <td class="qty">Rp {{ number_format($data_payroll->tambahan, 0, ',') }}</td>
+                    <td class="qty">Rp {{ number_format($data_payroll->tambahan, 0, ',', '.') }}</td>
                     <td class="qty"></td>
                     <td class="qty"></td>
                     <td class="qty"></td>
@@ -197,33 +197,31 @@
 
                 <tr>
                     <td class="service">Total Pendapatan</td>
-                    <td class="total">Rp {{ number_format($data_payroll->gaji_kotor, 0, ',') }}</td>
+                    <td class="total">Rp {{ number_format($data_payroll->gaji_kotor, 0, ',', '.') }}</td>
                     <td class="service">Total Potongan</td>
-                    <td class="total">Rp {{ number_format($data_payroll->kasbon, 0, ',') }}</td>
+                    <td class="total">Rp {{ number_format($data_payroll->kasbon, 0, ',', '.') }}</td>
                     <td></td>
                 </tr>
                 <tr>
                     <td class="service">Sisa Hutang</td>
-                    <td class="total">Rp {{ number_format(0, 0, ',') }}</td>
+                    <td class="total">Rp {{ number_format(0, 0, '.') }}</td>
                     <td></td>
                     <td></td>
                     <td></td>
                 </tr>
                 <tr>
                     <td colspan="4" class="grand total">Terima Bersih</td>
-                    <td class="grand total">Rp {{ number_format($data_payroll->gaji_bersih, 0, ',') }}</td>
+                    <td class="grand total">Rp {{ number_format($data_payroll->gaji_bersih, 0, ',', '.') }}</td>
                 </tr>
             </tbody>
         </table>
         <hr>
         <table style="margin-bottom: 50x">
-            <thead>
-                <tr>
-                    <th class="unit">Dibuat</th>
-                    <th class="unit">Diketahui</th>
-                    <th class="unit">Disetujui</th>
-                </tr>
-            </thead>
+            <div>
+                <span style="margin-left: 3cm">Dibuat</span>
+                <span style="margin-left: 4.7cm">Diketahui</span>
+                <span style="margin-left: 4.6cm">Disetujui</span>
+            </div>
         </table>
         <br><br><br><br><br><br><br><br>
 

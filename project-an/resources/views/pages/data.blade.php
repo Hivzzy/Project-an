@@ -7,7 +7,7 @@
         <div class="col-sm-4">
             <div class="page-header float-left">
                 <div class="page-title">
-                    <h1>Import Laporan</h1>
+                    <h1>Data Karyawan</h1>
                 </div>
             </div>
         </div>
@@ -15,7 +15,7 @@
             <div class="page-header float-right">
                 <div class="page-title">
                     <ol class="breadcrumb text-right">
-                        <li class="active"><i class="fa fa-dashboard"></i></li>
+                        <li class="active"><i class="fa fa-users"></i></li>
                     </ol>
                 </div>
             </div>
@@ -41,41 +41,65 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
+                        @if (session()->has('failed'))
+                            <div class="alert alert-danger">
+                                {!! html_entity_decode(session()->get('failed')) !!}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @elseif (session()->has('success'))
+                            <div class="alert alert-success">
+                                {!! html_entity_decode(session()->get('success')) !!}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
                         <div class="card-header row">
-                            <strong class="card-title">Data Table</strong>
+                            <strong class="card-title ml-4">Import Laporan</strong>
                             @if (Auth::user()->role_id != 1)
-                            
-                                <form class="offset-md-4"  action="{{ route('upload.file') }}" method="POST" enctype="multipart/form-data">
+                                <form class="offset-md-3" action="{{ route('upload.file') }}" method="POST"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     <input type="file" name="file">
                                     <button type="submit" name="submit"
-                                        class="rounded-left rounded-right fa fa-upload btn btn-lg btn-primary"> Upload
+                                        class="rounded-left rounded-right btn btn-sm btn-primary">
+                                        <i class="fa fa-upload fa-">&nbsp;</i>
+                                        Upload
                                     </button>
                                 </form>
                                 @if ($data->isEmpty())
-                                <a href="{{ route('sendEmail') }}"> 
-                                    <button
-                                        class="ml-3 rounded-left rounded-right fa fa-mail-forward btn btn-lg btn-success" disabled>
-                                        Generate </button>
-                                </a>
-                                <a href="#">
-                                    <button class="ml-3 rounded-left rounded-right fa fa-trash-o btn btn-lg btn-warning" disabled>
-                                        Reset </button>
-                                </a>
+                                    <a href="{{ route('sendEmail') }}">
+                                        <button class="ml-3 rounded-left rounded-right btn btn-sm btn-success" disabled>
+                                            <i class="fa fa-mail-forward">&nbsp;</i>
+                                            Send to Email
+                                        </button>
+                                    </a>
                                 @else
-                                <a href="{{ route('sendEmail') }}"> 
-                                    <button
-                                        class="ml-3 rounded-left rounded-right fa fa-mail-forward btn btn-lg btn-success">
-                                        Generate </button>
-                                </a>
-                                <a href="#">
-                                    <button class="ml-3 rounded-left rounded-right fa fa-trash-o btn btn-lg btn-warning">
-                                        Reset </button>
-                                </a>
+                                    <a href="{{ route('sendEmail') }}">
+                                        <button class="ml-3 rounded-left rounded-right btn btn-sm btn-success">
+                                            <i class="fa fa-mail-forward">&nbsp;</i>
+                                            Send to Email
+                                        </button>
+                                    </a>
+                                @endif
+                                @if ($data->isEmpty())
+                                    <a href="{{ route('reset.data') }}">
+                                        <button class="ml-3 rounded-left rounded-right btn btn-sm btn-danger" disabled>
+                                            <i class="fa fa-trash-o">&nbsp;</i>
+                                            Reset Data
+                                        </button>
+                                    </a>
+                                @else
+                                    <a href="{{ route('reset.data') }}">
+                                        <button class="ml-3 rounded-left rounded-right btn btn-sm btn-danger">
+                                            <i class="fa fa-trash-o">&nbsp;</i>
+                                            Reset Data
+                                        </button>
+                                    </a>
                                 @endif
                             @endif
-
-
                         </div>
                         <div class="card-body">
                             <table id="bootstrap-data-table" class="table table-striped table-bordered">
@@ -100,14 +124,19 @@
                                             <td>{{ $row->nama_karyawan }}</td>
                                             <td>{{ $row->jabatan }}</td>
                                             <td>{{ $row->hari_kerja }}</td>
-                                            <td>Rp {{ number_format($row->gaji_perhari, 0, ',') }}</td>
-                                            <td>RP {{ number_format($row->gaji_kotor, 0, ',') }}</td>
-                                            <td>RP {{ number_format($row->tambahan, 0, ',') }}</td>
-                                            <td>RP {{ number_format($row->kasbon, 0, ',') }}</td>
-                                            <td>RP {{ number_format($row->gaji_bersih, 0, ',') }}</td>
-                                            <td><a href="/viewpdf" class="ml-2"><button
-                                                        class="rounded-left rounded-right fa fa-eye btn btn-lg btn-primary">
-                                                        Preview </button></a></td>
+                                            <td>Rp {{ number_format($row->gaji_perhari, 0, ',', '.') }}</td>
+                                            <td>Rp {{ number_format($row->gaji_kotor, 0, ',', '.') }}</td>
+                                            <td>Rp {{ number_format($row->tambahan, 0, ',', '.') }}</td>
+                                            <td>Rp {{ number_format($row->kasbon, 0, ',', '.') }}</td>
+                                            <td><b> Rp {{ number_format($row->gaji_bersih, 0, ',', '.') }}</b></td>
+                                            <td><a href="/viewpdf/{{ $row->id }}" class="ml-2">
+                                                    <button class="rounded-left rounded-right btn btn-xs"
+                                                        style="background-color: #F5B52D; color: #000000;">
+                                                        <i class="fa fa-eye">&nbsp;</i>
+                                                        Preview
+                                                    </button>
+                                                </a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
