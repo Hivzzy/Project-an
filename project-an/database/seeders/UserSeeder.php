@@ -17,15 +17,15 @@ class UserSeeder extends Seeder
     {
         UserModel::create([
             'role_id' => 1,
-            'name' => 'Taufik Aditya',
-            'username' => 'taufik_aditya',
-            'password' => bcrypt('password'),
+            'name' => 'Top Management',
+            'username' => 'top_management',
+            'password' => bcrypt('cihampelashotelgroup'),
         ]);
         UserModel::create([
             'role_id' => 2,
-            'name' => 'Habban Masykur Abdullah',
-            'username' => 'habban_masykur',
-            'password' => bcrypt('password'),
+            'name' => 'Dedi Kurnia',
+            'username' => 'accounting',
+            'password' => bcrypt('cihampelashotelgroup'),
         ]);
     }
 }
