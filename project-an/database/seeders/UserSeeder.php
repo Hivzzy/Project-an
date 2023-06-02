@@ -19,13 +19,13 @@ class UserSeeder extends Seeder
             'role_id' => 1,
             'name' => 'Top Management',
             'username' => 'top_management',
-            'password' => bcrypt('cihampelashotelgroup'),
+            'password' => bcrypt('cihampelashotel'),
         ]);
         UserModel::create([
             'role_id' => 2,
             'name' => 'Dedi Kurnia',
             'username' => 'accounting',
-            'password' => bcrypt('cihampelashotelgroup'),
+            'password' => bcrypt('cihampelashotel'),
         ]);
     }
 }

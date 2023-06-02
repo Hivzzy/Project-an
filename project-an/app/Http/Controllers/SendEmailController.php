@@ -10,6 +10,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class SendEmailController extends Controller
 {
@@ -22,6 +23,7 @@ class SendEmailController extends Controller
     {
         $payroll = Payroll::all();
         $periode = MonthlyReport::first()->periode;
+
         if ($payroll != null && $periode != null) {
             $data = ['name' => 'Gaji Karyawan'];
 
@@ -34,6 +36,14 @@ class SendEmailController extends Controller
 
             ini_set('max_execution_time', 300);
             foreach ($payroll as $myPayroll) {
+                $validator = Validator::make($payroll->all(), [
+                    'email' => 'required|email',
+                ]);
+
+                if ($validator->fails()) {
+                    return redirect()->route('show.data')->with('failed', '<strong>FORMAT EMAIL UNTUK KARYAWAN ' . $myPayroll->nama_karyawan . ' TIDAK VALID</strong>, silahkan periksa kembali file excel.');
+                }
+
                 $path = 'storage/invoice/' . $myPayroll->nama_karyawan . '.pdf';
                 $files = [
                     public_path($path),
@@ -43,6 +53,7 @@ class SendEmailController extends Controller
                     'title' => 'Slip Gaji Periode',
                     'files' => $files,
                 ];
+
                 Mail::to($myPayroll->email)->send(new MyTestMail($details, $myPayroll, $periode));
             }
 
